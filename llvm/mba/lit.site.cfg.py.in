@@ -1,0 +1,18 @@
+@LIT_SITE_CFG_IN_HEADER@
+
+import sys
+
+config.name = "MBA test"
+config.suffixes = [".c"]
+config.llvm_src_root = path(r"@LLVM_SOURCE_DIR@")
+config.mba_src_root = "@CMAKE_SOURCE_DIR@"
+config.mba_obj_root = "@CMAKE_BINARY_DIR@"
+config.llvm_tools_dir = "@LLVM_BINARY_DIR@/bin"  # FIXME: why doesn't 'LLVM_TOOLS_DIR' work?
+
+import lit.llvm
+lit.llvm.initialize(lit_config, config)
+
+# Let the main config do the real work.
+lit_config.load_config(
+    config, os.path.join(config.llvm_src_root, "mba/lit.cfg.py"))
+

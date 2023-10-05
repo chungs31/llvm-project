@@ -1226,6 +1226,7 @@ if( LLVM_INCLUDE_TESTS )
   endif()
   add_subdirectory(utils/lit)
   add_subdirectory(test)
+  add_subdirectory(mba)
   add_subdirectory(unittests)
 
   if (WIN32)
